@@ -1,0 +1,22 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@pelando.com.br",
+      "password": "admin",
+      "role": "ADMIN",
+      "token": "token_access_hash",
+      "avatar": "https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder-300-grey.jpg"
+    },
+    {
+      "id": 1,
+      "username": "user",
+      "email": "user@pelando.com.br",
+      "password": "user",
+      "role": "USER",
+      "token": "token_access_hash",
+      "avatar": "https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder-300-grey.jpg"
+    }
+  ]
+}
