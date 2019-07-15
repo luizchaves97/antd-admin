@@ -36,8 +36,20 @@ git clone https://github.com/pelando/dashboard-boilerplate.git
 cd dashboard-boilerplate
 ```
 
-2. Run Docker Compose.
+2. Up the application.
 
 ```bash
-docker-compose up
+make up
+```
+
+or
+
+```bash
+make up-silent
+```
+
+2. Down the application.
+
+```bash
+make down
 ```
