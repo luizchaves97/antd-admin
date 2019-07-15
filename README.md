@@ -24,8 +24,8 @@ A Dashboard boilerplate made by Pelando using Ant Design UI library
 
 ## Prerequisite
 
-- [Node & npm](https://nodejs.org/en/)
-- [Yarn](https://yarnpkg.com/en/) (Recommended)
+- [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+- [Docker Compose](https://docs.docker.com/compose/overview/)
 
 ## Usage
 
@@ -36,30 +36,8 @@ git clone https://github.com/pelando/dashboard-boilerplate.git
 cd dashboard-boilerplate
 ```
 
-2. Installation dependence.
+2. Run Docker Compose.
 
 ```bash
-yarn
+docker-compose up
 ```
-
-Or
-
-```bash
-npm install
-```
-
-3. Start local server.
-
-```bash
-yarn start
-```
-
-4. After the startup is complete, open a browser and visit [http://localhost:3000](http://localhost:3000), If you need to change the startup port, you can configure it in the `.env` file.
-
-## Deploy
-
-```bash
-yarn build
-```
-
-> Check it out the `build/` folder.
