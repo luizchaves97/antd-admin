@@ -48,8 +48,20 @@ or
 make up-silent
 ```
 
+After the startup is complete, open a browser and visit http://localhost:3000
+
 2. Down the application.
 
 ```bash
 make down
 ```
+
+## Dev Server
+
+First, you need to install JSON Server globally `npm install -g json-server`, then:
+
+```bash
+make dev-server
+```
+
+After the startup is complete, open a browser and visit http://localhost:3333
