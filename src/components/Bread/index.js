@@ -3,7 +3,7 @@ import { Breadcrumb, Icon } from 'antd';
 
 import { Container } from './style';
 
-export default class Bread extends PureComponent {
+class Bread extends PureComponent {
   render() {
     return (
       <Container>
@@ -21,3 +21,5 @@ export default class Bread extends PureComponent {
     );
   }
 }
+
+export default Bread;

@@ -1,16 +1,22 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
 
-import store from 'store';
+import './config/ReactotronConfig';
+
 import Routes from './routes';
+import history from './services/history';
 
-export default function App() {
+import store from './store';
+
+function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <Router history={history}>
         <Routes />
-      </BrowserRouter>
+      </Router>
     </Provider>
   );
 }
+
+export default App;

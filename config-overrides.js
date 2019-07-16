@@ -1,10 +1,8 @@
-const { resolve } = require('path');
-
 const {
   override,
   fixBabelImports,
   addLessLoader,
-  addWebpackResolve,
+  addBabelPlugin,
 } = require('customize-cra');
 
 module.exports = override(
@@ -17,15 +15,10 @@ module.exports = override(
     javascriptEnabled: true,
     modifyVars: { '@primary-color': '#ff7900' },
   }),
-  addWebpackResolve({
-    extensions: ['.js'],
-    alias: {
-      components: resolve(__dirname, 'src', 'components'),
-      config: resolve(__dirname, 'src', 'config'),
-      layouts: resolve(__dirname, 'src', 'layouts'),
-      pages: resolve(__dirname, 'src', 'pages'),
-      services: resolve(__dirname, 'src', 'services'),
-      store: resolve(__dirname, 'src', 'store'),
+  addBabelPlugin([
+    'babel-plugin-root-import',
+    {
+      rootPathSuffix: 'src',
     },
-  })
+  ])
 );

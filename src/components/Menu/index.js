@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Menu, Icon } from 'antd';
 
-import config from 'config';
+import config from '~/config';
 
 import { MenuContainer } from './style';
 

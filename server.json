@@ -5,15 +5,16 @@
       "username": "admin",
       "email": "admin@pelando.com.br",
       "password": "admin",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "token": "token_access_hash"
     },
     {
       "id": 1,
       "username": "user",
       "email": "user@pelando.com.br",
       "password": "user",
-      "role": "USER"
+      "role": "USER",
+      "token": "token_access_hash"
     }
-  ],
-  "session": []
+  ]
 }

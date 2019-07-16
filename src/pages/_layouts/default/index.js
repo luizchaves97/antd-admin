@@ -1,17 +1,19 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Layout, Drawer } from 'antd';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
 
-import config from 'config';
-import Header from 'components/Header';
-import Sider from 'components/Sider';
-import Bread from 'components/Bread';
+import Header from '~/components/Header';
+import Sider from '~/components/Sider';
+import Bread from '~/components/Bread';
 
-import { Container, ContentContainer, ContentContainerChildren } from './style';
+import config from '~/config';
+
+import { Wrapper, Container, ContainerContent } from './styles';
 
 const { Footer } = Layout;
 
-class DashboardLayout extends PureComponent {
+class DefaultLayout extends Component {
   state = {
     isMobile: false,
     collapsed: true,
@@ -69,18 +71,22 @@ class DashboardLayout extends PureComponent {
           ) : (
             <Sider {...siderProps} />
           )}
-          <Container>
+          <Wrapper>
             <Header {...headerProps} />
-            <ContentContainer>
+            <Container>
               <Bread />
-              <ContentContainerChildren>{children}</ContentContainerChildren>
+              <ContainerContent>{children}</ContainerContent>
               <Footer>{config.copyright}</Footer>
-            </ContentContainer>
-          </Container>
+            </Container>
+          </Wrapper>
         </Layout>
       </>
     );
   }
 }
 
-export default DashboardLayout;
+DefaultLayout.propTypes = {
+  children: PropTypes.element.isRequired,
+};
+
+export default DefaultLayout;

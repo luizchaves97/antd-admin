@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { Menu, Avatar } from 'antd';
 
-import { logoPath } from 'config';
+import { logoPath } from '~/config';
 import { HeaderFixed, MenuHeader, ButtonCollapsed } from './style';
 
 const { SubMenu } = Menu;
-
-export default class Header extends PureComponent {
+class Header extends PureComponent {
   render() {
     const { collapsed, isMobile, toggle } = this.props;
     const headerFixedProps = { collapsed, isMobile };
@@ -38,3 +38,11 @@ export default class Header extends PureComponent {
     );
   }
 }
+
+Header.propTypes = {
+  collapsed: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
+};
+
+export default Header;

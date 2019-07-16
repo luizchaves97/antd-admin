@@ -1,15 +1,16 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { Layout } from 'antd';
 
-import config from 'config';
-import ScrollBar from 'components/ScrollBar';
-import SiderMenu from 'components/Menu';
+import config from '~/config';
+import ScrollBar from '~/components/ScrollBar';
+import SiderMenu from '~/components/Menu';
 
 import { MenuContainer, Brand, Logo } from './style';
 
 class Sider extends PureComponent {
   render() {
-    const { isMobile, collapsed, toggle } = this.props;
+    const { collapsed, isMobile, toggle } = this.props;
 
     return (
       <Layout.Sider
@@ -41,5 +42,11 @@ class Sider extends PureComponent {
     );
   }
 }
+
+Sider.propTypes = {
+  collapsed: PropTypes.bool.isRequired,
+  isMobile: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
+};
 
 export default Sider;

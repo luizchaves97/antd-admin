@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 
 const { Content } = Layout;
 
-export const Container = styled(Layout)`
+export const Wrapper = styled(Layout)`
   padding-top: 64px;
   height: 100vh;
   flex: 1;
@@ -15,11 +15,11 @@ export const Container = styled(Layout)`
   }
 `;
 
-export const ContentContainer = styled(Content)`
+export const Container = styled(Content)`
   margin: 0 25px;
 `;
 
-export const ContentContainerChildren = styled.div`
+export const ContainerContent = styled.div`
   padding: 24px;
   background: #fff;
   min-height: 300px;

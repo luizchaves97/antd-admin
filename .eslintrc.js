@@ -21,21 +21,18 @@ module.exports = {
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
     'import/prefer-default-export': 'off',
-    'react/prop-types': 'off',
-    'react/no-unused-state': 'off',
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'react/jsx-one-expression-per-line': 'off',
+    'global-require': 'off',
     'no-param-reassign': 'off',
+    'no-underscore-dangle': 'off',
+    camelcase: 'off',
+    'no-console': ['error', { allow: ['tron'] }],
   },
   settings: {
     'import/resolver': {
-      alias: {
-        map: [
-          ['components', './src/components'],
-          ['config', './src/config'],
-          ['layouts', './src/layouts'],
-          ['pages', './src/pages'],
-          ['services', './src/services'],
-          ['store', './src/store'],
-        ],
+      'babel-plugin-root-import': {
+        rootPathSuffix: 'src',
       },
     },
   },
