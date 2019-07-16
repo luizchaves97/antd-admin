@@ -3,14 +3,17 @@
     {
       "id": 1,
       "username": "admin",
+      "email": "admin@pelando.com.br",
       "password": "admin",
       "role": "ADMIN"
     },
     {
       "id": 1,
       "username": "user",
+      "email": "user@pelando.com.br",
       "password": "user",
-      "role": "DEFAUL"
+      "role": "USER"
     }
-  ]
+  ],
+  "session": []
 }

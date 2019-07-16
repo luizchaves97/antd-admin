@@ -24,6 +24,7 @@ module.exports = override(
       config: resolve(__dirname, 'src', 'config'),
       layouts: resolve(__dirname, 'src', 'layouts'),
       pages: resolve(__dirname, 'src', 'pages'),
+      services: resolve(__dirname, 'src', 'services'),
       store: resolve(__dirname, 'src', 'store'),
     },
   })

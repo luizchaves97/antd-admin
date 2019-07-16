@@ -22,6 +22,12 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
   }
+
+  .ant-input-prefix {
+    i.anticon {
+      color: rgba(0, 0, 0, 0.25);
+    }
+  }
 `;
 
 export const Logo = styled.div`

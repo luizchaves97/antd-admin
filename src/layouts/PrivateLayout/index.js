@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { Route } from 'react-router-dom';
 import { Layout, Drawer } from 'antd';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
 
@@ -84,17 +83,4 @@ class DashboardLayout extends PureComponent {
   }
 }
 
-const DashboardLayoutRoute = ({ component: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={matchProps => (
-        <DashboardLayout>
-          <Component {...matchProps} />
-        </DashboardLayout>
-      )}
-    />
-  );
-};
-
-export default DashboardLayoutRoute;
+export default DashboardLayout;

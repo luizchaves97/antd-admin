@@ -22,6 +22,8 @@ module.exports = {
     'react/jsx-filename-extension': ['warn', { extensions: ['.jsx', '.js'] }],
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off',
+    'react/no-unused-state': 'off',
+    'no-param-reassign': 'off',
   },
   settings: {
     'import/resolver': {
@@ -31,6 +33,7 @@ module.exports = {
           ['config', './src/config'],
           ['layouts', './src/layouts'],
           ['pages', './src/pages'],
+          ['services', './src/services'],
           ['store', './src/store'],
         ],
       },
