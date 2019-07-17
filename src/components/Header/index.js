@@ -11,7 +11,12 @@ function Header({ isMobile, handleToggle }) {
   const dispatch = useDispatch();
   const profile = useSelector(state => state.user.profile);
   const { collapsed } = useSelector(state => state.user.config);
-  const headerFixedProps = { collapsed, isMobile };
+
+  const headerFixedProps = {
+    collapsed: collapsed ? 1 : 0,
+    ismobile: isMobile ? 1 : 0,
+  };
+
   const { SubMenu } = Menu;
 
   function menuToggleIcon() {

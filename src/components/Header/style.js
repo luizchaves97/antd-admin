@@ -13,7 +13,7 @@ export const HeaderFixed = styled(Header)`
   top: 0;
   right: 0;
   width: ${props => {
-    if (props.isMobile) {
+    if (props.ismobile) {
       return '100%';
     }
     if (props.collapsed) {
