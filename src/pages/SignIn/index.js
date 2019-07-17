@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Form, Icon, Input, Button } from 'antd';
 
 import config from '~/config';
@@ -11,6 +11,7 @@ const FormItem = Form.Item;
 
 function SignIn({ form }) {
   const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -58,8 +59,8 @@ function SignIn({ form }) {
             )}
           </FormItem>
           <Row>
-            <Button type="primary" htmlType="submit">
-              Sign in
+            <Button type="primary" htmlType="submit" loading={!!loading}>
+              {loading ? 'Loading...' : 'Sign in'}
             </Button>
           </Row>
         </form>

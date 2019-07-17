@@ -4,4 +4,8 @@ module.exports = {
   logoPath: '/imgs/logo.svg',
   fixedHeader: true,
   theme: 'light',
+  notification: {
+    placement: 'topRight',
+    duration: 3,
+  },
 };
