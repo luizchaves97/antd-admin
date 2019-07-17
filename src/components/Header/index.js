@@ -1,48 +1,60 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Menu, Avatar } from 'antd';
 
-import { logoPath } from '~/config';
+import { signOut } from '~/store/modules/auth/actions';
+
 import { HeaderFixed, MenuHeader, ButtonCollapsed } from './style';
 
-const { SubMenu } = Menu;
-class Header extends PureComponent {
-  render() {
-    const { collapsed, isMobile, toggle } = this.props;
-    const headerFixedProps = { collapsed, isMobile };
+function Header({ isMobile, handleToggle }) {
+  const dispatch = useDispatch();
+  const profile = useSelector(state => state.user.profile);
+  const { collapsed } = useSelector(state => state.user.config);
+  const headerFixedProps = { collapsed, isMobile };
+  const { SubMenu } = Menu;
 
-    const rightContent = [
-      <MenuHeader key="user" mode="horizontal">
-        <SubMenu
-          title={
-            <>
-              <span>Hi,</span>
-              <span>Luiz</span>
-              <Avatar src={logoPath} />
-            </>
-          }
-        >
-          <Menu.Item key="SignOut">Sign out</Menu.Item>
-        </SubMenu>
-      </MenuHeader>,
-    ];
-
-    return (
-      <HeaderFixed {...headerFixedProps}>
-        <ButtonCollapsed
-          type={collapsed ? 'menu-unfold' : 'menu-fold'}
-          onClick={toggle}
-        />
-        <div>{rightContent}</div>
-      </HeaderFixed>
-    );
+  function menuToggleIcon() {
+    if (isMobile) {
+      return 'menu';
+    }
+    if (collapsed) {
+      return 'menu-unfold';
+    }
+    return 'menu-fold';
   }
+
+  function handleSignOut() {
+    dispatch(signOut());
+  }
+
+  return (
+    <HeaderFixed {...headerFixedProps}>
+      <ButtonCollapsed type={menuToggleIcon()} onClick={handleToggle} />
+      <div>
+        <MenuHeader key="user" mode="horizontal">
+          <SubMenu
+            title={
+              <>
+                <span>Hi,</span>
+                <span>{profile.username}</span>
+                <Avatar src={profile.avatar} />
+              </>
+            }
+          >
+            <Menu.Item key="SignOut" onClick={handleSignOut}>
+              Sign out
+            </Menu.Item>
+          </SubMenu>
+        </MenuHeader>
+      </div>
+    </HeaderFixed>
+  );
 }
 
 Header.propTypes = {
-  collapsed: PropTypes.bool.isRequired,
   isMobile: PropTypes.bool.isRequired,
-  toggle: PropTypes.func.isRequired,
+  handleToggle: PropTypes.func.isRequired,
 };
 
 export default Header;

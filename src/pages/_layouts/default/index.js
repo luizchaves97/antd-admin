@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Layout, Drawer } from 'antd';
 import { enquireScreen, unenquireScreen } from 'enquire-js';
@@ -7,82 +8,73 @@ import Header from '~/components/Header';
 import Sider from '~/components/Sider';
 import Bread from '~/components/Bread';
 
+import { toggleMenu } from '~/store/modules/user/actions';
+
 import config from '~/config';
 
 import { Wrapper, Container, ContainerContent } from './styles';
 
 const { Footer } = Layout;
 
-class DefaultLayout extends Component {
-  state = {
-    isMobile: false,
-    collapsed: true,
-  };
+function DefaultLayout({ children }) {
+  const dispatch = useDispatch();
+  const { collapsed } = useSelector(state => state.user.config);
+  const [isMobile, setIsMobile] = useState(false);
 
-  componentDidMount() {
-    this.enquireHandler = enquireScreen(mobile => {
-      const { isMobile } = this.state;
+  useEffect(() => {
+    const enquireHandler = enquireScreen(mobile => {
       if (isMobile !== mobile) {
-        this.setState({
-          isMobile: mobile,
-        });
+        setIsMobile(mobile);
       }
     });
+
+    return () => {
+      unenquireScreen(enquireHandler);
+    };
+  }, [isMobile]);
+
+  function handleToggle() {
+    dispatch(toggleMenu());
   }
 
-  componentWillUnmount() {
-    unenquireScreen(this.enquireHandler);
-  }
+  const headerProps = { isMobile, handleToggle };
+  const siderProps = { isMobile };
 
-  toggle = () => {
-    const { collapsed } = this.state;
-    this.setState({
-      collapsed: !collapsed,
-    });
-  };
-
-  render() {
-    const { children } = this.props;
-    const { isMobile, collapsed } = this.state;
-    const { toggle } = this;
-    const headerProps = { collapsed, isMobile, toggle };
-    const siderProps = { collapsed, isMobile, toggle };
-    return (
-      <>
-        <Layout>
-          {isMobile ? (
-            <Drawer
-              maskClosable
-              closable={false}
-              onClose={this.toggle}
-              visible={collapsed}
-              placement="left"
-              width={256}
-              style={{
-                padding: 0,
-                height: '100vh',
-              }}
-              bodyStyle={{
-                padding: 0,
-              }}
-            >
-              <Sider {...siderProps} collapsed={false} />
-            </Drawer>
-          ) : (
+  return (
+    <>
+      <Layout>
+        {isMobile ? (
+          <Drawer
+            maskClosable
+            closable={false}
+            onClose={handleToggle}
+            visible={collapsed}
+            placement="left"
+            width={256}
+            style={{
+              padding: 0,
+              height: '100vh',
+            }}
+            bodyStyle={{
+              padding: 0,
+            }}
+          >
             <Sider {...siderProps} />
-          )}
-          <Wrapper>
-            <Header {...headerProps} />
-            <Container>
-              <Bread />
-              <ContainerContent>{children}</ContainerContent>
-              <Footer>{config.copyright}</Footer>
-            </Container>
-          </Wrapper>
-        </Layout>
-      </>
-    );
-  }
+          </Drawer>
+        ) : (
+          <Sider {...siderProps} />
+        )}
+        <Wrapper>
+          <Header {...headerProps} />
+          <Container>
+            <Bread />
+            <ContainerContent>{children}</ContainerContent>
+            <Footer>{config.copyright}</Footer>
+          </Container>
+        </Wrapper>
+      </Layout>
+    </>
+  );
 }
 
 DefaultLayout.propTypes = {
