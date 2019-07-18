@@ -10,15 +10,13 @@ import { MenuContainer } from './style';
 const SiderMenu = withRouter(({ location }) => {
   const { SubMenu, Item } = Menu;
   const routeSidebar = routes.filter(route => route.sidebar && !route.parentId);
-  const routerActive = routes.filter(
-    route => route.path === location.pathname
-  )[0];
+  const routerActive = routes.filter(route => route.path === location.pathname);
 
   return (
     <MenuContainer
       theme={config.theme}
       mode="inline"
-      defaultSelectedKeys={[routerActive.key]}
+      defaultSelectedKeys={[routerActive[0].key]}
     >
       {routeSidebar.map(item => {
         if (item.subMenu) {

@@ -6,6 +6,7 @@ import MyAccount from '~/pages/MyAccount';
 import NotFound from '~/pages/404';
 
 export default [
+  // [BEGIN] Public Routes
   {
     key: 'signin',
     path: '/',
@@ -13,6 +14,9 @@ export default [
     isPrivate: false,
     exact: true,
   },
+  // [END] Public Routes
+
+  // [BEGIN] Private Routes
   {
     key: 'dashboard',
     path: '/dashboard',
@@ -50,6 +54,9 @@ export default [
     isPrivate: true,
     sidebar: true,
   },
+  // [END] Private Routes
+
+  // 404 Not Found Page
   {
     key: '404',
     path: '*',
