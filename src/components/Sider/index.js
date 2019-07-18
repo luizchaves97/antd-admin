@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Layout } from 'antd';
@@ -22,10 +23,12 @@ function Sider({ isMobile }) {
       collapsed={isMobile ? false : collapsed}
     >
       <Brand>
-        <Logo>
-          <img alt="logo" src={config.logoPath} />
-          {collapsed && !isMobile ? null : <h1>{config.siteName}</h1>}
-        </Logo>
+        <Link to="/dashboard">
+          <Logo>
+            <img alt="logo" src={config.logoPath} />
+            {collapsed && !isMobile ? null : <h1>{config.siteName}</h1>}
+          </Logo>
+        </Link>
       </Brand>
 
       <MenuContainer>

@@ -23,7 +23,7 @@ function DefaultLayout({ children }) {
 
   useEffect(() => {
     const enquireHandler = enquireScreen(mobile => {
-      if (isMobile !== mobile) {
+      if (mobile && isMobile !== mobile) {
         setIsMobile(mobile);
       }
     });

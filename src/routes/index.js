@@ -1,18 +1,21 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
-import Route from './Route';
+import Route from './RouteWrapper';
 
-import SignInPage from '~/pages/SignIn';
-import DashboardPage from '~/pages/Dashboard';
-import NotFoundPage from '~/pages/404';
+import routes from './routes';
 
 export default function Routes() {
   return (
     <Switch>
-      <Route exact path="/" component={SignInPage} />
-      <Route path="/dashboard" component={DashboardPage} isPrivate />
-
-      <Route path="/" component={NotFoundPage} />
+      {routes.map(route => (
+        <Route
+          key={route.key}
+          path={route.path}
+          exact={route.exact ? route.exact : false}
+          component={route.component}
+          isPrivate={route.isPrivate}
+        />
+      ))}
     </Switch>
   );
 }

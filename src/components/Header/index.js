@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Menu, Avatar } from 'antd';
@@ -47,6 +48,9 @@ function Header({ isMobile, handleToggle }) {
               </>
             }
           >
+            <Menu.Item key="MyAccount">
+              <Link to="/my-account">My Account</Link>
+            </Menu.Item>
             <Menu.Item key="SignOut" onClick={handleSignOut}>
               Sign out
             </Menu.Item>
