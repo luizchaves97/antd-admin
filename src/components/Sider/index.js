@@ -11,10 +11,11 @@ import SiderMenu from '~/components/Menu';
 import { MenuContainer, Brand, Logo } from './style';
 
 function Sider({ isMobile }) {
+  const { Sider: Sidebar } = Layout;
   const { collapsed } = useSelector(state => state.user.config);
 
   return (
-    <Layout.Sider
+    <Sidebar
       width={256}
       theme={config.theme}
       breakpoint="lg"
@@ -40,7 +41,7 @@ function Sider({ isMobile }) {
           <SiderMenu />
         </ScrollBar>
       </MenuContainer>
-    </Layout.Sider>
+    </Sidebar>
   );
 }
 
