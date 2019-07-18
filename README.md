@@ -12,14 +12,15 @@ A Dashboard boilerplate made by Pelando using Ant Design UI library
 
 </div>
 
-#### Preview - [coming soon](http://)
+#### Preview - [coming soon](#)
 
 ## Features
 
 - **Neat Design**: Follow [Ant Design specification](http://ant.design/)
-- **Responsive**: Designed for variable screen sizes
+- **Authentication**: Authentication using Redux, Redux Saga e Reactotron
+- **Route System**: Add a new Route, and Sidebar and Breadcrumbs components recognize
 - **Styled Components**: Write CSS that's scoped to a single component
-- **JSON Server**: comming soon..
+- **JSON Server**: Simutate a REST API and work without back-end block you.
 - **UI Test**: coming soon..
 
 ## Prerequisite
